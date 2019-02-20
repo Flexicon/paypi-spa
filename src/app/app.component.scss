@@ -1,0 +1,18 @@
+.App {
+  @media screen and (min-width: 768px) {
+    height: 100%;
+  }
+}
+
+.App__header {
+  line-height: 64px;
+}
+
+.App__logo {
+  color: #fff;
+  font-size: 24px;
+}
+
+.App__content {
+  margin: 0 16px;
+}

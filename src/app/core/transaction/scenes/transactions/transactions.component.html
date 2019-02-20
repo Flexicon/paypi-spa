@@ -1,0 +1,11 @@
+<div>
+  <app-cashier></app-cashier>
+  <app-transactions-table
+    [transactions]="transactions"
+    [page]="pagination.page"
+    [limit]="pagination.limit"
+    [total]="transactions.length"
+    [loading]="loading"
+    (refetchData)="onRefetchData($event)"
+  ></app-transactions-table>
+</div>
