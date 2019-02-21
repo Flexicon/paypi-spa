@@ -1,0 +1,31 @@
+@import 'variables';
+
+::ng-deep .ant-tabs-nav {
+  @media screen and (min-width: $tablet) {
+    width: 100%;
+
+    > div:first-of-type {
+      text-align: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+.MethodSelection__method {
+  text-align: center;
+  margin-bottom: 10px;
+
+  img {
+    border: 1px solid #ddd;
+    transition-property: transform, border-color;
+    transition-duration: 250ms;
+  }
+}
+
+.MethodSelection__method--selected {
+  img {
+    border-color: $primary;
+    transform: scale(1.2);
+  }
+}

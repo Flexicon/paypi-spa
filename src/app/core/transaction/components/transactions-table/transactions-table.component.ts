@@ -34,7 +34,7 @@ export class TransactionsTableComponent {
     { text: 'Error', value: TransactionStatus.ERROR },
     { text: 'Cancelled', value: TransactionStatus.CANCELLED }
   ];
-  scrollSettings = { x: '700px', y: '50vh' };
+  scrollSettings = { x: '1200px', y: '50vh' };
   currentFilter: string;
 
   constructor() {}

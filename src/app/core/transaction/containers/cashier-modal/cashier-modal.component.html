@@ -1,0 +1,17 @@
+<div class="CashierModal">
+  <nz-spin [nzSpinning]="loading">
+    <ng-container [ngSwitch]="stage">
+      <ng-container *ngSwitchCase="1">
+        <app-method-selection
+          [methods]="methods"
+          [selectedMethodName]="selectedMethod?.name"
+          (methodSelected)="onMethodSelected($event)"
+        ></app-method-selection>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="2">
+        <p>Stage 2 yeee</p>
+      </ng-container>
+    </ng-container>
+  </nz-spin>
+</div>
