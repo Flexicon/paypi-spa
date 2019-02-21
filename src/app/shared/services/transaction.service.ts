@@ -10,7 +10,7 @@ import { Transaction } from '../models/transaction.model';
   providedIn: 'root'
 })
 export class TransactionService {
-  private baseUrl;
+  private baseUrl: string;
 
   constructor(private $http: HttpClient) {
     this.baseUrl = environment.apiUrl;
@@ -23,6 +23,12 @@ export class TransactionService {
     let params = new HttpParams()
       .append('page', `${pagination.page}`)
       .append('limit', `${pagination.limit}`);
+
+    Object.entries(pagination.order).forEach(([key, dir]) => {
+      if (dir) {
+        params = params.set('order', `${key}_${dir}`);
+      }
+    });
 
     if (filter) {
       params = params.append('filter', filter);

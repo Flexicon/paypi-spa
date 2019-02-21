@@ -16,6 +16,8 @@
       <tr>
         <th
           nzShowFilter
+          nzShowSort
+          nzSortKey="status"
           nzWidth="150px"
           [nzFilters]="filterStatus"
           [nzFilterMultiple]="false"
@@ -23,8 +25,8 @@
         >
           Status
         </th>
-        <th nzWidth="200px">Initiated</th>
-        <th nzWidth="200px">Finalized</th>
+        <th nzWidth="200px" nzShowSort nzSortKey="startTime">Initiated</th>
+        <th nzWidth="200px" nzShowSort nzSortKey="endTime">Finalized</th>
         <th nzShowSort nzSortKey="provider" nzWidth="150px">Provider</th>
         <th nzShowSort nzSortKey="type" nzWidth="150px">Type</th>
         <th nzShowSort nzSortKey="amount" nzWidth="150px">Amount</th>
@@ -35,14 +37,17 @@
         *ngFor="let transaction of transactionsTable.data"
         (click)="openDetails(transaction.id)"
       >
-        <td>
+        <td class="TransactionsTable__status-col">
           <app-status-icon [status]="transaction.status"></app-status-icon>
+          <span class="TransactionsTable__status-text">
+            {{ transaction.status }}
+          </span>
         </td>
         <td>{{ transaction.start_time | date: 'medium' }}</td>
         <td>{{ transaction.end_time | date: 'medium' }}</td>
         <td>{{ transaction.provider }}</td>
-        <td>{{ transaction.type }}</td>
-        <td>{{ transaction.amount }}</td>
+        <td>{{ transaction.type | titlecase }}</td>
+        <td>{{ transaction.amount | currency: transaction.currency }}</td>
       </tr>
     </tbody>
   </nz-table>

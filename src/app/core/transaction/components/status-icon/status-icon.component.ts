@@ -22,12 +22,12 @@ const statusIcons: { [status: string]: StatusIcon } = {
     color: '#FF0000'
   },
   [TransactionStatus.ERROR]: {
-    icon: 'close-circle',
-    color: '#EB2F96'
+    icon: 'exclamation-circle',
+    color: '#EAC100'
   },
   [TransactionStatus.CANCELLED]: {
     icon: 'info-circle',
-    color: '#DDDDDD'
+    color: '#AAA'
   }
 };
 

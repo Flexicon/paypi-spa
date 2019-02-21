@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 import en from '@angular/common/locales/en';
 
 import { AppComponent } from './app.component';
@@ -24,7 +25,8 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    SimpleNotificationsModule.forRoot()
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

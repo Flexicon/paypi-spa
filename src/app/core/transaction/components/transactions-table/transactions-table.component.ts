@@ -11,6 +11,7 @@ import {
   RequestFilters
 } from 'src/app/shared/models/pagination-data.model';
 import { TransactionStatus } from 'src/app/shared/enums/transaction-status.enum';
+import { SortDirection } from 'src/app/shared/enums/SortDirection.enum';
 
 @Component({
   selector: 'app-transactions-table',
@@ -38,9 +39,17 @@ export class TransactionsTableComponent {
 
   constructor() {}
 
-  sort(sort: { key: string; value: string }): void {
-    this.sortKey = sort.key;
-    this.sortValue = sort.value;
+  sort(sortBy: { key: string; value: string }): void {
+    this.sortKey = sortBy.key;
+    if (sortBy.value) {
+      this.sortValue =
+        sortBy.value === 'ascend'
+          ? SortDirection.ASCEND
+          : SortDirection.DESCEND;
+    } else {
+      this.sortValue = null;
+    }
+
     this.fetchTableData(true);
   }
 

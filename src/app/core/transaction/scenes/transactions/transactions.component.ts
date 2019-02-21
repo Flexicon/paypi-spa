@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TransactionService } from 'src/app/shared/services/transaction.service';
 import { Subject } from 'rxjs';
 import {
@@ -28,6 +28,11 @@ export class TransactionsComponent implements OnInit, OnDestroy {
     this.setupInitialData();
     this.prepareDebounceOnRefetch();
     this.fetchData();
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   onRefetchData(filters: RequestFilters): void {
@@ -66,10 +71,5 @@ export class TransactionsComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$)
       )
       .subscribe(filters => this.fetchData(filters));
-  }
-
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 }

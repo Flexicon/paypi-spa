@@ -4,7 +4,7 @@
     [transactions]="transactions"
     [page]="pagination.page"
     [limit]="pagination.limit"
-    [total]="transactions.length"
+    [total]="pagination.total"
     [loading]="loading"
     (refetchData)="onRefetchData($event)"
   ></app-transactions-table>
