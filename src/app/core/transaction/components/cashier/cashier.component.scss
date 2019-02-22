@@ -1,0 +1,10 @@
+.Cashier {
+  margin: 1rem 0;
+  text-align: right;
+}
+
+.Cashier__trigger {
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+}

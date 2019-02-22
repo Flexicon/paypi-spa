@@ -1,0 +1,34 @@
+<div class="MethodSelection" *ngIf="methods">
+  <h3>Select operation and method</h3>
+
+  <nz-tabset>
+    <nz-tab
+      *ngFor="let tab of tabs"
+      [nzTitle]="titleTemplate"
+      (nzClick)="selectMethod(null, null)"
+    >
+      <ng-template #titleTemplate>
+        <i nz-icon [type]="tab.icon"></i> {{ tab.name }}
+      </ng-template>
+
+      <ng-container *ngFor="let method of methods">
+        <div
+          class="MethodSelection__method"
+          [ngClass]="{
+            'MethodSelection__method--selected':
+              selectedMethodName === method.name
+          }"
+          *ngIf="method.types.includes(tab.type)"
+        >
+          <a role="button" (click)="selectMethod(method, tab.type)">
+            <img
+              [src]="'/assets/img/' + method.name + '_logo_main.png'"
+              width="100"
+              [title]="method.label"
+            />
+          </a>
+        </div>
+      </ng-container>
+    </nz-tab>
+  </nz-tabset>
+</div>

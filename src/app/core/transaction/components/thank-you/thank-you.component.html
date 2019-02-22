@@ -1,0 +1,11 @@
+<div class="ThankYou" *ngIf="transaction">
+  <i
+    class="ThankYou__icon"
+    nz-icon
+    [type]="statusIcons[transaction.status].icon"
+    theme="twotone"
+    [twoToneColor]="statusIcons[transaction.status].color"
+  ></i>
+  <h3>Transaction # {{ transaction.id }}</h3>
+  <p>Has finished with a status of: {{ transaction.status | titlecase }}</p>
+</div>
