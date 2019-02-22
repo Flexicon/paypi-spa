@@ -16,6 +16,7 @@ import { AmountFormComponent } from './transaction/components/amount-form/amount
 import { AdditionalDataFormComponent } from './transaction/components/additional-data-form/additional-data-form.component';
 import { ThankYouComponent } from './transaction/components/thank-you/thank-you.component';
 import { SharedModule } from '../shared/shared.module';
+import { TransactionDetailsComponent } from './transaction/components/transaction-details/transaction-details.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SharedModule } from '../shared/shared.module';
     UserDataFormComponent,
     AmountFormComponent,
     AdditionalDataFormComponent,
-    ThankYouComponent
+    ThankYouComponent,
+    TransactionDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -40,6 +42,6 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule
   ],
   exports: [HeaderComponent, FooterComponent],
-  entryComponents: [CashierModalComponent]
+  entryComponents: [CashierModalComponent, TransactionDetailsComponent]
 })
 export class CoreModule {}

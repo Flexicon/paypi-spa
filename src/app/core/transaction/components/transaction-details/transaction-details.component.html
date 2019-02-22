@@ -1,0 +1,87 @@
+<div class="TransactionDetails" *ngIf="transaction">
+  <nz-list [nzItemLayout]="'horizontal'" [nzLoading]="loading">
+    <nz-list-item>
+      <nz-list-item-meta
+        nzTitle="Status"
+        [nzDescription]="transaction.status | titlecase"
+      >
+      </nz-list-item-meta>
+      <app-status-icon [status]="transaction.status"></app-status-icon>
+    </nz-list-item>
+
+    <nz-list-item>
+      <nz-list-item-meta
+        nzTitle="Time initiated"
+        [nzDescription]="transaction.start_time | date: 'long'"
+      >
+      </nz-list-item-meta>
+    </nz-list-item>
+
+    <nz-list-item>
+      <nz-list-item-meta
+        nzTitle="Time finished"
+        [nzDescription]="transaction.end_time | date: 'long'"
+      >
+      </nz-list-item-meta>
+    </nz-list-item>
+
+    <nz-list-item>
+      <nz-list-item-meta
+        nzTitle="Type"
+        [nzDescription]="transaction.type | titlecase"
+      >
+      </nz-list-item-meta>
+    </nz-list-item>
+
+    <nz-list-item>
+      <nz-list-item-meta
+        nzTitle="Amount"
+        [nzDescription]="transaction.amount | currency: transaction.currency"
+      >
+      </nz-list-item-meta>
+    </nz-list-item>
+
+    <nz-list-item>
+      <nz-list-item-meta
+        nzTitle="Provider"
+        [nzDescription]="transaction.provider"
+      >
+      </nz-list-item-meta>
+      <img
+        [src]="'/assets/img/' + transaction.provider + '_logo_main.png'"
+        width="100px"
+      />
+    </nz-list-item>
+
+    <ng-container *ngIf="!loading">
+      <nz-list-item>
+        <nz-list-item-meta
+          nzTitle="User"
+          [nzDescription]="user.first_name + ' ' + user.last_name"
+        >
+        </nz-list-item-meta>
+      </nz-list-item>
+
+      <nz-list-item>
+        <nz-list-item-meta
+          nzTitle="Address"
+          [nzDescription]="[user.address, user.city, user.zip].join(', ')"
+        >
+        </nz-list-item-meta>
+      </nz-list-item>
+
+      <nz-list-item>
+        <nz-list-item-meta
+          nzTitle="Country Code"
+          [nzDescription]="user.country_code"
+        >
+        </nz-list-item-meta>
+      </nz-list-item>
+
+      <nz-list-item>
+        <nz-list-item-meta nzTitle="Birthday" [nzDescription]="user.birthday">
+        </nz-list-item-meta>
+      </nz-list-item>
+    </ng-container>
+  </nz-list>
+</div>

@@ -35,7 +35,7 @@
     <tbody>
       <tr
         *ngFor="let transaction of transactionsTable.data"
-        (click)="openDetails(transaction.id)"
+        (click)="openDetails(transaction)"
       >
         <td class="TransactionsTable__status-col">
           <app-status-icon [status]="transaction.status"></app-status-icon>

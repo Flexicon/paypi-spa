@@ -12,6 +12,8 @@ import {
 } from 'src/app/shared/models/pagination-data.model';
 import { TransactionStatus } from 'src/app/shared/enums/transaction-status.enum';
 import { SortDirection } from 'src/app/shared/enums/SortDirection.enum';
+import { NzModalService } from 'ng-zorro-antd';
+import { TransactionDetailsComponent } from '../transaction-details/transaction-details.component';
 
 @Component({
   selector: 'app-transactions-table',
@@ -37,7 +39,7 @@ export class TransactionsTableComponent {
   scrollSettings = { x: '1200px', y: '50vh' };
   currentFilter: string;
 
-  constructor() {}
+  constructor(private modalService: NzModalService) {}
 
   sort(sortBy: { key: string; value: string }): void {
     this.sortKey = sortBy.key;
@@ -58,8 +60,13 @@ export class TransactionsTableComponent {
     this.fetchTableData(true);
   }
 
-  openDetails(id: number) {
-    console.log(id);
+  openDetails(transaction: Transaction) {
+    this.modalService.create({
+      nzTitle: `Transaction # ${transaction.id} details`,
+      nzComponentParams: { transaction },
+      nzContent: TransactionDetailsComponent
+      // nzWidth: 720,
+    });
   }
 
   fetchTableData(reset: boolean = false): void {
