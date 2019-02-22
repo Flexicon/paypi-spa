@@ -22,40 +22,21 @@ export class UserDataFormComponent implements OnInit {
   formControlsConfig: { [key: string]: any };
 
   ngOnInit() {
-    // TODO:: remove debugging form data
     this.formControlsConfig = {
-      first_name: ['John', [Validators.required, Validators.minLength(2)]],
-      last_name: ['Smith', [Validators.required, Validators.minLength(3)]],
-      gender: ['M', [Validators.required, Validators.pattern(/[mf]/gi)]],
-      email: ['john@smithy.com', [Validators.required, Validators.email]],
-      address: [
-        '102 Drebeck Rd',
-        [Validators.required, Validators.minLength(3)]
-      ],
-      city: ['Seattle', [Validators.required, Validators.minLength(3)]],
-      state: ['WA'],
-      zip: ['12432', [Validators.required]],
+      first_name: ['', [Validators.required, Validators.minLength(2)]],
+      last_name: ['', [Validators.required, Validators.minLength(3)]],
+      gender: [null, [Validators.required, Validators.pattern(/[mf]/gi)]],
+      email: ['', [Validators.required, Validators.email]],
+      address: ['', [Validators.required, Validators.minLength(3)]],
+      city: ['', [Validators.required, Validators.minLength(3)]],
+      state: [''],
+      zip: ['', [Validators.required]],
       country_code: [
-        'US',
+        null,
         [Validators.required, Validators.minLength(2), Validators.maxLength(2)]
       ],
-      birthday: ['1990-03-20', Validators.required]
+      birthday: ['', Validators.required]
     };
-    // this.formControlsConfig = {
-    //   first_name: ['', [Validators.required, Validators.minLength(2)]],
-    //   last_name: ['', [Validators.required, Validators.minLength(3)]],
-    //   gender: [null, [Validators.required, Validators.pattern(/[mf]/gi)]],
-    //   email: ['', [Validators.required, Validators.email]],
-    //   address: ['', [Validators.required, Validators.minLength(3)]],
-    //   city: ['', [Validators.required, Validators.minLength(3)]],
-    //   state: [''],
-    //   zip: ['', [Validators.required]],
-    //   country_code: [
-    //     null,
-    //     [Validators.required, Validators.minLength(2), Validators.maxLength(2)]
-    //   ],
-    //   birthday: ['', Validators.required]
-    // };
   }
 
   onFormValidityChanged(form: FormGroup): void {
