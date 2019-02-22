@@ -59,6 +59,23 @@ export class UserDataFormComponent implements OnInit {
   }
 
   onFormValidityChanged(form: FormGroup): void {
+    if (form.valid) {
+      const birthdayControl = form.get('birthday');
+      const birthday: Date = birthdayControl.value;
+      const year = birthday.getFullYear();
+      const month = birthday
+        .getMonth()
+        .toString()
+        .padStart(2, '0');
+      const day = birthday
+        .getDate()
+        .toString()
+        .padStart(2, '0');
+
+      birthdayControl.patchValue(`${year}-${month}-${day}`, {
+        emitEvent: false
+      });
+    }
     this.formValidityChanged.emit(form);
   }
 }

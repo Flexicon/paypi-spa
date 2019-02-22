@@ -52,6 +52,6 @@ export const USER_DATA_FORM_FIELDS: FormField[] = [
   {
     name: 'birthday',
     label: 'Birthday',
-    type: 'text'
+    type: 'date'
   }
 ];

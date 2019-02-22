@@ -26,8 +26,8 @@ export class TransactionsTableComponent {
   @Input() total: number;
   @Input() loading: boolean;
   @Output() refetchData = new EventEmitter<RequestFilters>();
-  sortValue = null;
-  sortKey = null;
+  sortValue = 'DESC';
+  sortKey = 'id';
   filterStatus = [
     { text: 'Success', value: TransactionStatus.SUCCESS },
     { text: 'Failed', value: TransactionStatus.FAILED },

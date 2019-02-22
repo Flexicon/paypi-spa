@@ -47,10 +47,14 @@ export class CashierComponent implements OnInit {
             modal.close(true);
           }
         }
-      ]
+      ],
+      nzOnCancel: componentInstance => {
+        if (!!componentInstance.newTransaction) {
+          this.transactionMade.emit();
+        }
+      }
     });
 
-    // Return a result when closed
     modal.afterClose.subscribe(result => {
       if (result) {
         this.transactionMade.emit();

@@ -18,6 +18,11 @@
             ></nz-option>
           </nz-select>
 
+          <nz-date-picker
+            *ngSwitchCase="'date'"
+            [formControlName]="field.name"
+          ></nz-date-picker>
+
           <input
             *ngSwitchDefault
             nz-input
