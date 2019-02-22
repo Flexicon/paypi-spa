@@ -12,7 +12,7 @@ interface StatusIcon {
   color: string;
 }
 
-const statusIcons: { [status: string]: StatusIcon } = {
+export const statusIcons: { [status: string]: StatusIcon } = {
   [TransactionStatus.SUCCESS]: {
     icon: 'check-circle',
     color: '#52C41A'
