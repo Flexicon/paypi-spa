@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { PaginationData, Pagination } from '../models/pagination-data.model';
-import { Transaction } from '../models/transaction.model';
+import { Transaction, TransactionRequest } from '../models/transaction.model';
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +37,13 @@ export class TransactionService {
     return this.$http
       .get(`${this.baseUrl}/transactions`, { params })
       .pipe(map(res => res as PaginationData<Transaction>));
+  }
+
+  public createTransaction(
+    transaction: TransactionRequest
+  ): Observable<Transaction> {
+    return this.$http
+      .post(`${this.baseUrl}/transactions`, { ...transaction })
+      .pipe(map(res => res as Transaction));
   }
 }

@@ -1,5 +1,5 @@
 <div class="Transactions">
-  <app-cashier></app-cashier>
+  <app-cashier (transactionMade)="onTransactionMade()"></app-cashier>
   <app-transactions-table
     [transactions]="transactions"
     [page]="pagination.page"

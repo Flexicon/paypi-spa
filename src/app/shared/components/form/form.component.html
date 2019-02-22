@@ -1,0 +1,32 @@
+<div class="FormComponent">
+  <form nz-form [formGroup]="form">
+    <nz-form-item *ngFor="let field of fields">
+      <nz-form-label [nzSpan]="6" [nzFor]="field.name">
+        {{ field.label }}
+      </nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <ng-container [ngSwitch]="field.type">
+          <nz-select
+            *ngSwitchCase="'select'"
+            [nzPlaceHolder]="field.placeholder || 'Choose'"
+            [formControlName]="field.name"
+          >
+            <nz-option
+              *ngFor="let option of field.options"
+              [nzValue]="option.value"
+              [nzLabel]="option.label"
+            ></nz-option>
+          </nz-select>
+
+          <input
+            *ngSwitchDefault
+            nz-input
+            autocomplete="off"
+            [formControlName]="field.name"
+            [type]="field.type"
+          />
+        </ng-container>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</div>

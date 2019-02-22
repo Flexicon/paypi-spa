@@ -39,13 +39,17 @@ export class TransactionsComponent implements OnInit, OnDestroy {
     this.requestFiltersSubject$.next(filters);
   }
 
+  onTransactionMade(): void {
+    this.fetchData();
+  }
+
   private setupInitialData() {
     this.transactions = [];
     this.pagination = {
       page: 1,
       limit: 10,
       order: {
-        id: 'ASC'
+        id: 'DESC'
       }
     };
   }

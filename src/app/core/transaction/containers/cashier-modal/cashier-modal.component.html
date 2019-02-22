@@ -1,7 +1,13 @@
 <div class="CashierModal">
   <nz-spin [nzSpinning]="loading">
+    <nz-steps [nzCurrent]="stage - 1" [nzStartIndex]="0" *ngIf="stage > 0">
+      <nz-step nzTitle="User Data"></nz-step>
+      <nz-step nzTitle="Amount"></nz-step>
+      <nz-step nzTitle="Additional Data"></nz-step>
+    </nz-steps>
+
     <ng-container [ngSwitch]="stage">
-      <ng-container *ngSwitchCase="1">
+      <ng-container *ngSwitchCase="0">
         <app-method-selection
           [methods]="methods"
           [selectedMethodName]="selectedMethod?.name"
@@ -9,8 +15,27 @@
         ></app-method-selection>
       </ng-container>
 
+      <ng-container *ngSwitchCase="1">
+        <app-user-data-form
+          (formValidityChanged)="onFormValidityChanged($event)"
+        ></app-user-data-form>
+      </ng-container>
+
       <ng-container *ngSwitchCase="2">
-        <p>Stage 2 yeee</p>
+        <app-amount-form
+          (formValidityChanged)="onFormValidityChanged($event)"
+        ></app-amount-form>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="3">
+        <app-additional-data-form
+          [method]="selectedMethod"
+          (formValidityChanged)="onFormValidityChanged($event)"
+        ></app-additional-data-form>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="4">
+        <app-thank-you></app-thank-you>
       </ng-container>
     </ng-container>
   </nz-spin>
